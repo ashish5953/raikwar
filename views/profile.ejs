@@ -1,0 +1,43 @@
+
+  <% include ./partials/header.ejs %>
+
+  <link rel="stylesheet" href="../stylesheets/style.css">
+
+  <div class="container">
+    <form id="hidden" action="/uploads" enctype="multipart/form-data" method="post">
+      <input id="fileinp" type="file" name="dp">
+      <input type="submit">
+    </form>
+  </div>
+
+    <div class="container mt-5">
+      <div class="card" style="display: flex; flex-direction: column; padding: 20px; align-items: center; border: 1px solid gray; width: 250px; height: 350px;">
+        <div class="circle" style="overflow: hidden; border-radius: 50%; width: 100px; height: 100px; background-color: red; ">
+          <img id="img" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" src="../images/uploads/<%= user.image %>" alt="">
+        </div>
+        <h1><%= user.username %></h1>
+        <h6><%= user.email %></h6>
+        <p><%= user.number %></p>
+        <a href="/like/<%= user._id %>">like by <%= user.like.length %></a>
+      </div>
+    </div>
+
+
+
+    <script>
+      var hidden = document.querySelector('#hidden');
+      var fileinp = document.querySelector('#fileinp');
+      var img = document.querySelector('#img');
+      
+      img.addEventListener('click', function(){
+        fileinp.click()
+      })
+
+      document.querySelector('#fileinp').addEventListener('change', function(){
+        hidden.submit();
+      })
+    </script>
+
+    <% include ./partials/footer.ejs %>
+    
+   

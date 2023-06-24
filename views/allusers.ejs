@@ -1,0 +1,23 @@
+
+    <% include ./partials/header.ejs %>
+
+
+    <div class="container mt-5 " style="display: flex; gap: 20px; text-align: center;">
+      <% allusers.forEach(function(user){ %>
+        <div class="card" style="width: 18rem;">
+            <img src="<%= user.image %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.username %></h5>
+              <p class="card-text"><%= user.email %></p>
+              <a href="/like/<%= user._id %>" class="btn btn-primary">like by <%= user.like.length %></a> <br>
+              <a href="/logout"><button style="margin-top: 10px; background-color: red; color: white; font-weight: 700; border: none; border-radius: 100px; padding: 5px 10px;" >logout</button></a>
+            </div>
+          </div>
+      <% }) %>
+    </div>
+
+
+
+    <% include ./partials/footer.ejs %>
+   
+
